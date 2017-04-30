@@ -1,9 +1,7 @@
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
+
 //import java.sql.RequestDispatcher;
 
 import javax.servlet.ServletException;
@@ -11,7 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
+import javax.servlet.http.HttpSession;
+
 import javax.servlet.*;
 
 /**
@@ -38,11 +37,15 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html");  
         
         
-		   String n=request.getParameter("email");  
-		    String p=request.getParameter("password");  
+		   String email=request.getParameter("email");  
+		    String password=request.getParameter("password");  
 		    
-		    if(Logincheck.validate(n,p)){  
+		    if(Logincheck.validate(email,password)){
+		    	HttpSession s = request.getSession();
+		    	s.setAttribute("user", email);
 		    	System.out.println("welcome to musicmania");
+		        RequestDispatcher rd=request.getRequestDispatcher("visit_home.jsp");  
+		        rd.include(request,response); 
 		       // RequestDispatcher rd=request.getRequestDispatcher("");  
 		       // rd.forward(request,response);  
 		    }  

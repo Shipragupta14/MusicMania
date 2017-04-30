@@ -8,6 +8,8 @@
 h1 {
     color: White;
 }
+
+
 </style>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>MusicMania </title>
@@ -28,6 +30,14 @@ h1 {
 	</head>
 	<body>
 
+<%
+boolean display_login = true;
+if(session.getAttribute("user")!= null){
+	display_login = false;
+}
+
+
+%>
 		<div class="wrap">
 	
 			<div class="header">
@@ -49,24 +59,29 @@ h1 {
 			<div class="clear"> </div>
 			<div class="sub-header">
 				<div class="logo">
-					<a href="index.html"><img src="${pageContext.request.contextPath}/images/musicmania.png" title="logo" /></a>
+					<a href="visit_home.html"><img src="${pageContext.request.contextPath}/images/musicmania.png" title="logo" /></a>
 				
 				<h1> Welcome To MUSICMANIA</h1>
 				</div>
 				<div class="sub-header-center">
 					<form action="search" method="POST">
-						Search By Album: <input type="text" name="album">
+						Search By Artist: <input type="text" name="album">
 						
    					 <input type ="submit" value="SEARCH"></form>
 				</div>
 				<div class="sub-header-right">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/login.jsp">log in</a></li>
-						<li><a href="${pageContext.request.contextPath}/signup.jsp">Sign up</a></li>
-						<li><a href="#">Your account</a></li>
+						<li id="display_login"><a href="${pageContext.request.contextPath}/login.jsp" >log in</a></li>
+						
+						<li id  = "display_signup"><a href="${pageContext.request.contextPath}/signup.jsp">Sign up</a></li>
+						<li id = "display_welcome">Welcome: <%=session.getAttribute("user") %>
+						</li>
+						<li id = "display_acnt"><a href="${pageContext.request.contextPath}/admin_login.jsp" >Admin</a></li>
+						<li id = "display_logout"><a href="${pageContext.request.contextPath}/logout.jsp">Logout</a></li>
 						<li><a href="#">CART: (EMPTY) <img src="${pageContext.request.contextPath}/images/cart.png" title="cart" /></a></li>
 					</ul>
 				</div>
+				
 				<div class="clear"> </div>
 			</div>
 			<div class="clear"> </div>
@@ -132,6 +147,33 @@ h1 {
 			</div>
 			</div>
 		</div>
-	</head>
+		<script>
+var n = document.getElementById("display_login");
+var p = document.getElementById("display_signup");
+var m = document.getElementById("display_welcome");
+var l = document.getElementById("display_logout");
+var y = document.getElementById("display_acnt");
+
+
+console.log(n.innerHTML);
+if(<%=display_login%>){
+	n.style.display = "inline-block";
+	p.style.display = "inline-block";
+	m.style.display = "none";
+	l.style.display = "none";
+	y.style.display = "inline-block";
+	
+	
+}else{
+	n.style.display = "none";
+	p.style.display = "none";
+	m.style.display = "inline-block";
+	l.style.display = "inline-block";
+	y.style.display = "none";
+	
+
+}
+
+</script>
 </body>
 </html>

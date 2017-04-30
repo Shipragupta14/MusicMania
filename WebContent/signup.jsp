@@ -22,13 +22,13 @@
 	  
 		<form action = "signup" method = "POST">
 		   <div class="lable">
-		        <div class="col_1_of_2 span_1_of_2">	<input type="text" class="text" value="First Name" name = "fname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}" id="active"></div>
+                <div class="col_1_of_2 span_1_of_2"><input type="text" class="text" value="First Name" name = "fname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}"></div>
                 <div class="col_1_of_2 span_1_of_2"><input type="text" class="text" value="Last Name" name = "lname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></div>
                 <div class="clear"> </div>
 		   </div>
 		   <div class="lable-2">
-		        <input type="text" class="text" value="Email id " name = "email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'your@email.com ';}" required>
-		        <input type="password" class="text" value="Password " name = "password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password ';}">
+		        <input type="text" class="text" value="Email id" name = "email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email id ';}" required>
+		        <input type="password" class="text" value="Password " name = "password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password ';}" required>
 		   </div>
 		   <div class="submit">
 			  <input type="submit" value="Create account" >

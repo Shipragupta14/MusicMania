@@ -27,10 +27,10 @@ h1 {
 <p style="text-align:center;">
 <input type="image" src="${pageContext.request.contextPath}/images/musicmania.png" alt="Submit" width="400" height="300"> 
 </p>
-		<form action = "main" method = "POST">
+		<form action = "login" method = "GET">
 		   <div class="lable-2">
-		        <input type="text" class="text" value="Email id " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'your@email.com ';}">
-		        <input type="password" class="text" value="Password " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password ';}">
+		        <input type="text" name="email" class="text" value="Email id " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'your@email.com ';}">
+		        <input type="password" name="password" class="text" value="Password " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password ';}">
 		   <div class="submit">
 		<input type="submit" value="Log In" >
 

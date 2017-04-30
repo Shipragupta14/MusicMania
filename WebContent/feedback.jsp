@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.sql.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,6 +25,14 @@
 						</li>
 					</ul>
 				</div>
+		<%
+boolean display_login = true;
+if(session.getAttribute("user")!= null){
+	display_login = false;
+}
+
+
+%>
 				<div class="clear"> </div>
 			</div>
 			<div class="clear"> </div>
@@ -38,9 +47,13 @@
 				</div>
 				<div class="sub-header-right">
 					<ul>
-					<li><a href="${pageContext.request.contextPath}/login.jsp">log in</a></li>
-						<li><a href="${pageContext.request.contextPath}/signup.jsp">Sign up</a></li>
-						<li><a href="#">Your account</a></li>
+						<li id="display_login"><a href="${pageContext.request.contextPath}/login.jsp" >log in</a></li>
+						
+						<li id  = "display_signup"><a href="${pageContext.request.contextPath}/signup.jsp">Sign up</a></li>
+						<li id = "display_welcome">Welcome: <%=session.getAttribute("user") %>
+						</li>
+						<li id = "display_acnt"><a href="${pageContext.request.contextPath}/admin.jsp" >Admin</a></li>
+						<li id = "display_logout"><a href="${pageContext.request.contextPath}/logout.jsp">Logout</a></li>
 						<li><a href="#">CART: (EMPTY) <img src="${pageContext.request.contextPath}/images/cart.png" title="cart" /></a></li>
 					</ul>
 				</div>
@@ -93,7 +106,7 @@
 						    	<span><textarea> </textarea></span>
 						    </div>
 						   <div>
-						   		<span><input type="submit" value="Submit"></span>
+						   		<span><input type="submit" value="Submit"><a href="https://mail.google.com/mail/u/0/#inbox?compose=15b85506a812856b"></span>
 						  </div>
 					    </form>
 				    </div>
@@ -141,6 +154,31 @@
 			</div>
 			</div>
 		</div>
+		<script>
+var n = document.getElementById("display_login");
+var p = document.getElementById("display_signup");
+var m = document.getElementById("display_welcome");
+var l = document.getElementById("display_logout");
+
+
+console.log(n.innerHTML);
+if(<%=display_login%>){
+	n.style.display = "inline-block";
+	p.style.display = "inline-block";
+	m.style.display = "none";
+	l.style.display = "none";
+	
+	
+}else{
+	n.style.display = "none";
+	p.style.display = "none";
+	m.style.display = "inline-block";
+	l.style.display = "inline-block";
+
+
+}
+
+</script>
 
 </body>
 </html>
