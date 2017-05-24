@@ -1,3 +1,0 @@
-Eclipse J2EE
-Tomcat Server 8.5
-MySql 
